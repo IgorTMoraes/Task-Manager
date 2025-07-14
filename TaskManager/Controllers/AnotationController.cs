@@ -3,7 +3,7 @@ using TaskManager.ViewModels;
 using TaskManager.Models;
 using AutoMapper;
 using static TaskManager.ViewModels.AnotationViewModel;
-using TaskManager.Services;
+using TaskManager.Api.Services;
 
 namespace TaskManager.Controllers
 {
@@ -15,11 +15,11 @@ namespace TaskManager.Controllers
         private static readonly List<AnotationModel> _anotacoes = new();
 
         // Dependências: serviço de anotações e AutoMapper
-        private readonly AnotationService _anotationService;
+        private readonly IAnotationService _anotationService;
         private readonly IMapper _mapper;
 
         // Construtor com injeção de dependência
-        public AnotationController(AnotationService anotationService, IMapper mapper)
+        public AnotationController(IAnotationService anotationService, IMapper mapper)
         {
             _anotationService = anotationService;
             _mapper = mapper;

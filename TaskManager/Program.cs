@@ -2,17 +2,19 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using TaskManager.Data;
 using TaskManager.Services;
+using TaskManager.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
 
 // EF Core com SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Injeção de dependência
-builder.Services.AddScoped<TaskService>();
+// Injeção de dependência - Registro da interface e implementação
+builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<IAnotationService, AnotationService>();
 
 // AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -20,14 +22,12 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // MVC / API
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddScoped<AnotationService>();
-builder.Services.AddSingleton<TaskService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

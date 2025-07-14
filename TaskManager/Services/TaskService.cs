@@ -2,10 +2,11 @@
 using TaskManager.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
+using TaskManager.Api.Services;
 
 namespace TaskManager.Services
 {
-    public class TaskService
+    public class TaskService : ITaskService
     {
         // Injeção de dependência do contexto do banco de dados
         private readonly ApplicationDbContext _context;
@@ -25,19 +26,19 @@ namespace TaskManager.Services
             return task; // Retorna a tarefa criada
         }
 
-        // Retorna todas as tarefas cadastradas.
+        // Retorna todas as tarefas cadastradas
         public async Task<List<TaskModel>> ListarAsync()
         {
             return await _context.Tasks.ToListAsync(); // Retorna todas as tarefas como uma lista
         }
 
-        // Retorna uma tarefa pelo seu ID.
+        // Retorna uma tarefa pelo seu ID
         public async Task<TaskModel?> ObterPorIdAsync(Guid id)
         {
             return await _context.Tasks.FindAsync(id); // Procura a tarefa pelo ID no banco
         }
 
-        // Marca uma tarefa como concluída.
+        // Marca uma tarefa como concluída
         // True se marcada com sucesso, false se não encontrada
         public async Task<bool> MarcarComoConcluidaAsync(Guid id)
         {
@@ -62,10 +63,6 @@ namespace TaskManager.Services
         }
     }
 }
-
-
-
-
 
 /*
 namespace TaskManager.Services

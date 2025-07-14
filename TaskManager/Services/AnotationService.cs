@@ -2,10 +2,11 @@
 using TaskManager.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using TaskManager.Api.Services;
 
 namespace TaskManager.Services
 {
-    public class AnotationService
+    public class AnotationService : IAnotationService
     {
         // Campo privado para o contexto do banco de dados
         private readonly ApplicationDbContext _context;

@@ -23,8 +23,8 @@ namespace TaskManager.Models
         // Indica se a tarefa foi concluída (padrão: false)
         public bool Concluida { get; set; }
 
-        // Construtor com parâmetros para inicializar a tarefa com valores fornecidos.
-        // Se o título for vazio ou nulo, define como "Sem título".
+        // Construtor com parâmetros para inicializar a tarefa com valores fornecidos
+        // Se o título for vazio ou nulo, define como "Sem título"
         public TaskModel(string descricao, string titulo = "", DateTime? dataLimite = null)
         {
             Titulo = string.IsNullOrWhiteSpace(titulo) ? "Sem título" : titulo;
@@ -33,7 +33,7 @@ namespace TaskManager.Models
             Concluida = false;
         }
 
-        // Construtor vazio necessário para o Entity Framework instanciar objetos automaticamente.
+        // Construtor vazio necessário para o Entity Framework instanciar objetos automaticamente
         public TaskModel() { }
     }
 }
