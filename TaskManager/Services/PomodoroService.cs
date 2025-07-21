@@ -19,7 +19,7 @@ namespace TaskManager.Services
         {
             while (true) // Loop 
             {
-                // Inicia um ciclo de trabalho
+                // Inicia um ciclo de trabalho 
                 Console.WriteLine($"\nPomodoro {pomodoroCount + 1}: Tempo de trabalho iniciado.");
                 Countdown(pomodoroTime * secondsConverts); // Converte minutos em segundos
 
