@@ -4,7 +4,7 @@
 
 namespace TaskManager.Migrations
 {
-    /// <inheritdoc />
+    /// <inheritdoc /> 
     public partial class Teste : Migration
     {
         /// <inheritdoc />
